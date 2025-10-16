@@ -1,0 +1,45 @@
+name: Build and Test QR Code Generator Docker Image
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout your code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Set up Docker Buildx (modern Docker builder)
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # 3️⃣ Log in to Docker Hub (optional but recommended)
+      # You’ll set DOCKERHUB_USERNAME and DOCKERHUB_TOKEN in GitHub Secrets
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # 4️⃣ Build Docker image (no push)
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/qr_code_generator:latest .
+
+      # 5️⃣ Test run container to verify it works
+      - name: Run container test
+        run: |
+          docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/qr_code_generator:latest --url https://www.njit.edu
+
+      # 6️⃣ Push Docker image to Docker Hub (optional but nice)
+      - name: Push Docker image to Docker Hub
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/qr_code_generator:latest
