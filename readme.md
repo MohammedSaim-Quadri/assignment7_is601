@@ -1,13 +1,13 @@
 # Module 7 Assignment
 
 ## My GitHub Repository
-![GitHub Repo](/qr_codes/QRCode_20251016040154.png "My GitHub QR Code Link")
+![GitHub Repo](/images/QRCode_20251016040154.png "My GitHub QR Code Link")
 
 ## My Assignment page
-![GitHub Assignment](/qr_codes/QRCode_20251016042135.png "My Assignment QR Link")
+![GitHub Assignment](/images/QRCode_20251016042135.png "My Assignment QR Link")
 
 ## My DockerHub Image
-![Docker QR Image](/qr_codes/QRCode_20251016040746.png "My Docker QR Code Link")
+![Docker QR Image](/images/QRCode_20251016040746.png "My Docker QR Code Link")
 
 ---
 
